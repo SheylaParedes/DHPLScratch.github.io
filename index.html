@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ingreso</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #d1e8f4; 
+            font-family: 'Arial', sans-serif;
+        }
+
+        .tarjeta-ingreso {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 400px;
+            border: 1px solid #b2d6e8;
+        }
+
+        h2 { color: #333; font-weight: bold; }
+
+        input[type="text"] {
+            width: 85%;
+            padding: 15px;
+            margin: 20px 0;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .btn-entrar {
+            background-color: #72b34a; 
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px; /* Estilo pill-shape */
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #5d9639; /* Efecto de profundidad */
+            transition: all 0.2s;
+        }
+
+        .btn-entrar:active {
+            transform: translateY(3px);
+            box-shadow: 0 1px 0 #5d9639;
+        }
+
+        .oculto { display: none; }
+
+        #mensaje-bienvenida h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tarjeta-ingreso">
+        <div id="formulario">
+            <h2>¡Hola! ingresa tu nombre</h2>
+            <input type="text" id="nombreUsuario" placeholder="Escribe aquí tu nombre">
+            <br>
+            <button class="btn-entrar" onclick="iniciarApp()">INGRESAR</button>
+        </div>
+
+        <div id="mensaje-bienvenida" class="oculto">
+            <h1 id="texto-saludo"></h1>
+            <p>Preparando la información...</p>
+            <small>Redirigiendo en 5 segundos</small>
+        </div>
+    </div>
+
+    <script>
+        function iniciarApp() {
+            const nombre = document.getElementById('nombreUsuario').value;
+            
+            if (nombre.trim() === "") {
+                alert("Por favor, ingresa tu nombre para continuar");
+                return;
+            }
+
+
+            document.getElementById('formulario').classList.add('oculto');
+            document.getElementById('texto-saludo').innerText = "¡Bienvenido, " + nombre + "!";
+            document.getElementById('mensaje-bienvenida').classList.remove('oculto');
+
+
+            setTimeout(() => {
+                window.location.href = "inicio.html"; 
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
